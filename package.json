@@ -1,0 +1,13 @@
+{
+    "name": "bookapp-nodejs",
+    "description": "BookApp NodeJS",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "latest",
+        "mongoose": "latest",
+        "mongodb": "latest",
+        "tingodb": "latest",
+        "tungus": "latest"
+    }
+}
