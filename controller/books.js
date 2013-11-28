@@ -1,5 +1,4 @@
 var Book = require('../model/book');
-var Author = require('../model/author');
 
 exports.read = function (req, res) {
     var id = req.params.id;
@@ -24,7 +23,7 @@ exports.create = function (req, res) {
             res.json(200, book);
         });
     });
-}
+};
 
 exports.update = function (req, res) {
     var id = req.params.id;
@@ -33,7 +32,7 @@ exports.update = function (req, res) {
         console.log('Book updated with id = ' + id);
         res.json(200, book);
     });
-}
+};
 
 exports.delete = function (req, res) {
     var id = req.params.id;
@@ -41,4 +40,4 @@ exports.delete = function (req, res) {
         console.log('Delete Book with id = ' + id);
         res.send(200);
     });
-}
+};

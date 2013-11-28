@@ -1,5 +1,4 @@
-var mongoose = require('mongoose')
-var Author = require('./author')
+var mongoose = require('mongoose');
 
 var bookSchema = mongoose.Schema({
     title: String,

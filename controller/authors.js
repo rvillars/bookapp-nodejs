@@ -21,7 +21,7 @@ exports.create = function (req, res) {
         console.log("Author created with id = " + author._id);
         res.json(200, author);
     });
-}
+};
 
 exports.update = function (req, res) {
     var id = req.params.id;
@@ -30,7 +30,7 @@ exports.update = function (req, res) {
         console.log('Author updated with id = ' + id);
         res.json(200, author);
     });
-}
+};
 
 exports.delete = function (req, res) {
     var id = req.params.id;
@@ -38,5 +38,4 @@ exports.delete = function (req, res) {
         console.log('Delete Author with id = ' + id);
         res.send(200);
     });
-}
-
+};

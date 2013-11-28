@@ -7,7 +7,7 @@ var books = require('./controller/books');
 
 var app = express();
 
-mongoose.connect('tingodb://c:/tmp');
+mongoose.connect('tingodb:///tmp');
 //mongoose.connect('mongodb://localhost/bookapp');
 
 app.configure(function () {
@@ -29,6 +29,5 @@ app.delete('/rest/books/:id', books.delete);
 
 app.use('/', express.static(__dirname + '/public'));
 
-app.listen(8080);
-console.log('Listening on port 3000...');
-
+app.listen(process.env.PORT);
+console.log('Listening on port '+process.env.PORT+'...');
