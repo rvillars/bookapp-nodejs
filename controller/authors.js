@@ -16,7 +16,7 @@ exports.list = function (req, res) {
 };
 
 exports.create = function (req, res) {
-    var author = new Author({ firstname: req.body.firstname, lastname: req.body.lastname });
+    var author = new Author(req.body);
     author.save(function (err, author) {
         console.log("Author created with id = " + author._id);
         res.json(200, author);
