@@ -6,6 +6,6 @@ node_js:
   - "0.10"
 deploy:
     provider: appfog
-    email: "roger.villars@bluewin.ch"
-    password: "$PASSWORD"
+    email: roger.villars@bluewin.ch
+    password: $PASSWORD
     app: bookapp-nodejs
