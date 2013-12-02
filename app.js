@@ -4,11 +4,14 @@ var app = express();
 console.log("**** ENV: "+app.get('env'));
 
 var mongourl;
+var useTingo;
+var port; 
+
 app.configure('development', function () {
     app.use(express.logger('dev'));
     useTingo = true;
     mongourl = "tingodb:///tmp";
-    port = 8080
+    port = 8080;
 });
 
 app.configure('cloud9', function () {
@@ -23,7 +26,7 @@ app.configure('local', function () {
     useTingo = false;
     var mongodb = require('mongodb');
     mongourl = "mongodb://localhost/bookapp";
-    port = 8080
+    port = 8080;
 });
 
 app.configure('production', function () {
