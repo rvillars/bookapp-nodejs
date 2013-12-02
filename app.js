@@ -14,14 +14,7 @@ app.configure('development', function () {
     port = 8080;
 });
 
-app.configure('cloud9', function () {
-    app.use(express.logger('dev'));
-    useTingo = true;
-    mongourl = "tingodb:///tmp";
-    port = process.env.PORT;
-});
-
-app.configure('local', function () {
+app.configure('mongo', function () {
     app.use(express.logger('dev'));
     useTingo = false;
     var mongodb = require('mongodb');
