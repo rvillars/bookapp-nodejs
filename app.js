@@ -3,42 +3,33 @@ var app = express();
 
 console.log("**** ENV: "+app.get('env'));
 
-var mongourl;
-var useTingo;
-var port; 
+var mongoUrl = "tingodb:///tmp";
+var port = 8080;
 
 app.configure('development', function () {
     app.use(express.logger('dev'));
-    useTingo = true;
-    mongourl = "tingodb:///tmp";
-    port = 8080;
+    var tungus = require('tungus');
 });
 
 app.configure('mongo', function () {
     app.use(express.logger('dev'));
-    useTingo = false;
     var mongodb = require('mongodb');
-    mongourl = "mongodb://localhost/bookapp";
-    port = 8080;
+    mongoUrl = "mongodb://localhost/bookapp";
 });
 
 app.configure('production', function () {
     app.use(express.logger('default'));
-    useTingo = false;
     var mongodb = require('mongodb');
     var env = JSON.parse(process.env.VCAP_SERVICES);
-    mongourl = ['mongodb-1.8'][0]['credentials'];
+    mongoUrl = env['mongodb-1.8'][0]['credentials'];
     port = process.env.VCAP_APP_PORT;
 });
 
-if (useTingo) {
-    var tungus = require('tungus');
-}
 var mongoose = require('mongoose');
 var authors = require('./controller/authors');
 var books = require('./controller/books');
 
-mongoose.connect(mongourl);
+mongoose.connect(mongoUrl);
 
 app.use(express.bodyParser());
 app.get('/rest/authors', authors.list);
