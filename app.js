@@ -1,19 +1,33 @@
 var express = require('express');
-var tungus = require('tungus');
-//var mongodb = require('mongodb');
 var mongoose = require('mongoose');
+var app = express();
 var authors = require('./controller/authors');
 var books = require('./controller/books');
 
-var app = express();
-
-mongoose.connect('tingodb:///tmp');
-//mongoose.connect('mongodb://localhost/bookapp');
-
+var mongourl;
 app.configure(function () {
     app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
     app.use(express.bodyParser());
+    var tungus = require('tungus');
+    mongourl = "tingodb:///tmp";
 });
+
+app.configure('local', function () {
+    app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
+    app.use(express.bodyParser());
+    var mongodb = require('mongodb');
+    mongourl = "mongodb://localhost/bookapp";
+});
+
+app.configure('prod', function () {
+    app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
+    app.use(express.bodyParser());
+    var mongodb = require('mongodb');
+    var env = JSON.parse(process.env.VCAP_SERVICES);
+    mongourl = ['mongodb-1.8'][0]['credentials'];
+});
+
+mongoose.connect(mongourl);
 
 app.get('/rest/authors', authors.list);
 app.get('/rest/authors/:id', authors.read);
