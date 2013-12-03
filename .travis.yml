@@ -3,8 +3,9 @@ env:
     secure: WxVNekTq27NudDojpACKpM3Spe0bin8BGfEkuDEwpvBXSaMtavObrQNtTMG/Kh/Kh/sBLTKCItxQ8QI5Atr9XcrEX/WoUKxj1VlinxzSWuK8bavPBU+i90SKQZFjGQpL4mXvmrTysxuu+ZC2H8Eb97RMDZgKrCgJ8YzvY2oxmBM=
 language: node_js
 node_js: '0.10'
-after_success:
-- gem install af
-- af login roger.villars@bluewin.ch --passwd $PASSWORD
-- af update bookapp-nodejs
+deploy:
+    provider: appfog
+    email: roger.villars@bluewin.ch
+    password: $PASSWORD
+    app: bookapp-nodejs
 
