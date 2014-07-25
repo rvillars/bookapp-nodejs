@@ -26,7 +26,7 @@ if ('production' == env) {
     app.use(morgan('default'));
     var mongodb = require('mongodb');
     var vcap = JSON.parse(process.env.VCAP_SERVICES);
-    mongoUrl = vcap['mongodb-1.8'][0]['credentials'];
+    mongoUrl = vcap['bookapp-mongodb'][0]['credentials'];
     port = process.env.VCAP_APP_PORT;
 };
 

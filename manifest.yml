@@ -6,3 +6,5 @@ applications:
   command: node app.js
   env:
     NODE_ENV: production
+  services:
+    - bookapp-mongodb
