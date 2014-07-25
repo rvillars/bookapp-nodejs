@@ -1,29 +1,34 @@
 var express = require('express');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
 var app = express();
 
 console.log("**** ENV: "+app.get('env'));
 
 var mongoUrl = "tingodb:///tmp";
-var port = 8080;
+var port = process.env.PORT || 8080;
+var ip = process.env.IP || 'localhost';
 
-app.configure('development', function () {
-    app.use(express.logger('dev'));
+var env = process.env.NODE_ENV || 'development';
+
+if ('development' == env) {
+    app.use(morgan('dev'));
     var tungus = require('tungus');
-});
+};
 
-app.configure('mongo', function () {
-    app.use(express.logger('dev'));
+if ('mongo' == env) {
+    app.use(morgan('dev'));
     var mongodb = require('mongodb');
     mongoUrl = "mongodb://localhost/bookapp";
-});
+};
 
-app.configure('production', function () {
-    app.use(express.logger('default'));
+if ('production' == env) {
+    app.use(morgan('default'));
     var mongodb = require('mongodb');
-    var env = JSON.parse(process.env.VCAP_SERVICES);
-    mongoUrl = env['mongodb-1.8'][0]['credentials'];
+    var vcap = JSON.parse(process.env.VCAP_SERVICES);
+    mongoUrl = vcap['mongodb-1.8'][0]['credentials'];
     port = process.env.VCAP_APP_PORT;
-});
+};
 
 var mongoose = require('mongoose');
 var authors = require('./controller/authors');
@@ -31,7 +36,7 @@ var books = require('./controller/books');
 
 mongoose.connect(mongoUrl);
 
-app.use(express.bodyParser());
+app.use(bodyParser());
 app.get('/rest/authors', authors.list);
 app.get('/rest/authors/:id', authors.read);
 app.post('/rest/authors', authors.create);
@@ -47,4 +52,4 @@ app.delete('/rest/books/:id', books.delete);
 app.use('/', express.static(__dirname + '/public'));
 
 app.listen(port);
-console.log('Listening on port '+port+'...');
+console.log('Listening on '+ip+":"+port+'...');

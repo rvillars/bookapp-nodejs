@@ -4,10 +4,12 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "express": "latest",
-        "mongoose": "latest",
-        "mongodb": "latest",
-        "tingodb": "latest",
-        "tungus": "latest"
+        "express": "~4.6.1",
+        "morgan": "~1.2.0",
+        "body-parser": "~1.5.0",
+        "mongoose": "~3.8.13",
+        "mongodb": "~1.4.7",
+        "tingodb": "~0.2.1",
+        "tungus": "~0.0.2"
     }
 }
