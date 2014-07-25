@@ -8,7 +8,7 @@ deploy:
   provider: cloudfoundry
   username: rvillars@bluewin.ch
   password:
-    secure: SbHTOG/nhVX84N1b96CtCa6UurpdihPxuICx7ZI3Uh9RXML5MCUv2MMQHrkhjaWzzTR6kkzphR6TRlqyUyUPkO44rmJbINclJPUF+CgkXvskpRUSOWzqJKTcTwimUfGrprG9RJIFUKfb/vV7d+ybEqiLbHVcuSCdhRfc7fK9Klc=
+    secure: RasahbH6b1grRuf4KiNnvzhnlgYkJaSWyfqBct2ziOXJ3fOuc/1JQF3QMLK+tReVuWan5CtdOqPviNpq8i6NTPT/SDiEWSfnQJBguM692wagEICAq2oFI9GJFbZxTvL5CK/L9WcDQ9KOd2UfoFy0XsxM34PjwoXbb9o+pP7krc4=
   api: https://api.run.pivotal.io
   organization: bigendian
   space: development
