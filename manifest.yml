@@ -1,0 +1,5 @@
+---
+applications:
+- name: bookapp-nodejs
+  memory: 256M
+  host: bookapp-nodejs
