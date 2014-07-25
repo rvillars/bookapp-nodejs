@@ -3,3 +3,6 @@ applications:
 - name: bookapp-nodejs
   memory: 256M
   host: bookapp-nodejs
+  command: node app.js
+  env:
+    NODE_ENV: production
