@@ -6,7 +6,7 @@ node_js: '0.10'
 deploy:
   edge: true
   provider: cloudfoundry
-  username: rvillars@bluewin.ch
+  username: roger.villars@bluewin.ch
   password:
     secure: RasahbH6b1grRuf4KiNnvzhnlgYkJaSWyfqBct2ziOXJ3fOuc/1JQF3QMLK+tReVuWan5CtdOqPviNpq8i6NTPT/SDiEWSfnQJBguM692wagEICAq2oFI9GJFbZxTvL5CK/L9WcDQ9KOd2UfoFy0XsxM34PjwoXbb9o+pP7krc4=
   api: https://api.run.pivotal.io
