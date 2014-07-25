@@ -4,8 +4,11 @@ env:
 language: node_js
 node_js: '0.10'
 deploy:
-    provider: appfog
-    email: roger.villars@bluewin.ch
-    password: $PASSWORD
-    app: bookapp-nodejs
-
+  edge: true
+  provider: cloudfoundry
+  username: rvillars@bluewin.ch
+  password:
+    secure: SykEYS3iFniY/Rutvwkmp4UPZoQF2nKTWrZN0q5mDl5NsABO7nIqc77gYCg7n0ZhFsQutOiYRxrorQT9EdWokUMZ8my6IQFitN1QAfWZSAepX05/UdLTPtb3B4wZe2QPH1A6DF7CuNlFdGi2NCLnrjcsv6Rq+2rauJdN7cgsO4Y=
+  api: https://api.run.pivotal.io
+  organization: bigendian
+  space: development
