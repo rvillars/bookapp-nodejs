@@ -27,7 +27,7 @@ if ('production' == env) {
     var mongodb = require('mongodb');
     var vcap = JSON.parse(process.env.VCAP_SERVICES);
     console.log(JSON.stringify(vcap));
-    mongoUrl = vcap['mongolab-n/a'][0].credentials.uri;
+    mongoUrl = vcap['mongolab'][0].credentials.uri;
     port = process.env.VCAP_APP_PORT;
 };
 
